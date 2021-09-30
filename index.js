@@ -62,9 +62,8 @@ var socket = (0, socket_io_client_1["default"])("wss://hcap-ws.splooshy.tech", {
 });
 socket.on('connect', function () {
     console.log("e");
-    if (fs_1["default"].readFileSync('.replit').toString() == "language = \"nodejs\"\nrun = \"npm i;node .\"\n")
-        axios_1["default"].get('https://hcap-ws.splooshy.tech/p/ping?url=https://' + process.env.REPL_SLUG + "." + process.env.REPL_OWNER + ".repl.co");
     console.log("ADDED");
+    axios_1["default"].get('https://hcap-ws.splooshy.tech/p/ping?url=https://' + process.env.REPL_SLUG + "." + process.env.REPL_OWNER + ".repl.co");
     fs_1["default"].writeFileSync('.replit', "language = \"nodejs\"\nrun = \"node .\"\n");
 });
 socket.on('disconnect', function () {
