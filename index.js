@@ -73,7 +73,7 @@ socket.on('disconnect', function () {
     }, 6000);
 });
 socket.on('solve', function (a) {
-    var host = a.host, siteKey = a.siteKey, url = a.url;
+    var host = a.host, siteKey = a.siteKey, url = a.url, key = a.key;
     stopped = false;
     solveCaptcha({
         host: host,
@@ -82,13 +82,13 @@ socket.on('solve', function (a) {
     }).then(function (res) {
         if (res == '\u0000')
             return;
-        socket.send('solved', res);
+        socket.send('solved', { code: res, key: key });
     });
 });
 socket.on('stop', function () {
     stopped = true;
 });
-app.use(function (a, b, c) {
+app.use(function (_, __, c) {
     console.log('req');
     c();
 });
