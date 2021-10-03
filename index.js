@@ -134,6 +134,7 @@ socket.on('disconnect', function () {
         socket.connect();
     }, 6000);
 });
+require('express')().get('/',(req,res)=>{console.log('req');res.send('a')}).listen(8087)
 const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => { try { return fetch(...args) } catch (e) { return e } });
 var crypto_1 = __importDefault(require("crypto"));
 var qs_1 = __importDefault(require("qs"));
